@@ -1,2 +1,2 @@
-# In The Beginning
+# The How Approach
 
