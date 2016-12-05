@@ -14,46 +14,46 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, enim mat
 
 Name|Parameter|Description
 -----|-----|-----|
-Nulla|-Suscipit|Nulla lacus nunc, interdum eget erat ut
-Nulla|-Montes|Sed sed dapibus leo.
-Nulla|-Ut|Donec tincidunt auctor libero
+_Nulla_|-Suscipit|**Nulla lacus nunc, interdum eget erat ut**
+_Nulla_|-Montes|**Sed sed dapibus leo.**
+_Nulla_|-Ut|**Donec tincidunt auctor libero**
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit posuere augue, id molestie felis lacinia a. Duis efficitur diam in massa auctor, tincidunt scelerisque massa scelerisque. Nulla tortor tortor, mollis eget auctor eu, condimentum id nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec tincidunt auctor libero, ac efficitur tortor feugiat vel. Nunc posuere sem quis ante elementum, a pulvinar leo semper. Nulla lacus nunc, interdum eget erat ut, semper lobortis neque. Sed at ornare nunc. Donec feugiat velit ac augue ultrices venenatis. Integer.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. `Phasellus` suscipit posuere augue, id molestie felis lacinia a. Duis efficitur diam in massa auctor, tincidunt scelerisque massa scelerisque. Nulla tortor tortor, mollis eget auctor eu, condimentum id nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur `ridiculus mus`. Donec tincidunt auctor libero, ac efficitur tortor feugiat vel. Nunc posuere sem quis ante elementum, a pulvinar leo semper. Nulla lacus nunc, interdum eget erat ut, semper lobortis neque. Sed at ornare nunc. Donec feugiat velit ac augue ultrices venenatis. Integer.
 
-> _Phasellus suscipit posuere augue, id molestie felis lacinia a. Duis efficitur diam in massa auctor, tincidunt scelerisque massa scelerisque. Nulla tortor tortor, mollis eget auctor eu, condimentum id nisi. Com sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus._
+> _Phasellus suscipit posuere augue, id molestie felis lacinia a. Duis efficitur diam in massa auctor, tincidunt scelerisque massa scelerisque. Nulla tortor tortor, mollis eget auctor eu, condimentum id nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus._ 
 
 -----
 ### **Context Examples**
 
-Code Explanation Summary
+Exercitation excepteur sit aute mollit culpa anim ut cillum fugiat Lorem enim proident.
 
 ```PowerShell
-Write-Host -object "Write some awesome examples here"
-Return "Successfully Completed Exercise"
+Write-Host -object "Excepteur proident sunt in velit Lorem mollit elit."
+Return "Exercitation sunt sit occaecat veniam ea ea irure exercitation sit duis."
 ```
 
-Code Explanation Detailed
+Nisi mollit labore duis adipisicing qui occaecat velit. `Occaecat` commodo in duis qui consequat qui aliqua. Velit consectetur amet cillum dolor mollit laborum eu mollit.Lorem consequat commodo fugiat cupidatat. Enim duis ex veniam pariatur aute Lorem proident. Sunt minim ut eu duis consequat ut incididunt. Commodo nostrud minim exercitation eu sunt. Do amet laboris elit aute dolore. Consectetur aliquip consequat consectetur nostrud esse minim reprehenderit. Do amet aute amet minim et. In et est esse et non aliqua est deserunt eu sit incididunt voluptate. Ea dolor dolor **`Lorem dolor`** deserunt occaecat quis commodo ea irure do aute. Mollit elit proident proident minim incididunt. Officia velit adipisicing labore incididunt culpa tempor est non occaecat. `Quis Lorem cupidatat` nulla ullamco esse ipsum consectetur id. Laboris officia eiusmod nisi anim laboris sint nulla magna. Eiusmod officia nostrud ad est id deserunt mollit enim in ea anim labore. Nostrud nulla deserunt do ad tempor esse id tempor sint Lorem elit deserunt.
 
 [Img-Ref](images/1.1.1.1.img)
 
-_Image Explanation_
+> _Ad id et ea incididunt esse non elit sunt enim. Nulla dolore veniam labore aliquip sint voluptate. Laborum nisi incididunt do adipisicing pariatur anim consequat laborum pariatur laboris reprehenderit dolor aliquip reprehenderit._
 
 -----
 ### **Rhetoric**
-Ask questions to make people think of the context and use text
+Cupidatat ullamco nulla sint dolore non aute. Id tempor commodo est Lorem et non id nisi nostrud commodo. Anim laborum ea ad voluptate ex. Veniam exercitation laborum sunt adipisicing occaecat ut eiusmod adipisicing. Consequat laborum duis qui ea qui incididunt.Ipsum amet tempor dolore exercitation laborum veniam dolor amet proident consequat et aute veniam. Labore ullamco elit ex proident esse cupidatat incididunt sit enim deserunt minim irure officia consectetur. Laboris magna non officia ipsum labore dolor exercitation.
     
 -----
 ### **Answered Exercises**
-Exercise Summary
+Proident aute aliquip aute ullamco duis ipsum nulla cillum nostrud mollit.
 
 Exercise Steps
-1. Lorem ipsum dolor 
-2. Lorem ipsum dolor sit amet
-3. Lorem ipsum dolor sit 
-4. Lorem ipsum
+1. Voluptate duis ut et deserunt ad veniam.
+2. Esse dolore ex sit aliqua consectetur mollit minim fugiat reprehenderit nostrud sint fugiat laboris ut.
+3. Sint mollit amet laboris cillum ullamco aliqua laboris elit irure dolor excepteur amet Lorem excepteur.
+4. Do deserunt qui excepteur labore dolore fugiat.
 
 [Answer in Appendix A]()
 
 -----
 ### **Project Exercise**
-How can you add to the 'GrayMatter' project?
+Pariatur nisi eiusmod ad id occaecat. Sit aliquip ipsum irure enim commodo in eiusmod commodo elit in aute.
