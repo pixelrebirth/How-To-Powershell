@@ -1,10 +1,26 @@
+function Write-TextRange {
+    param (
+        [int]$min,
+        [int]$max,
+        [string]$question
+    )
+    while ($string.length -lt ($min*50) -or $string.length -gt ($max*50)){
+        $string = Read-Host "$question ($($min)-$($max)w:~$([math]::Round($max/120))+L)"
+        Write-Host "$($string.length / 5) words"
+    }
+    return $string | Check-Spelling -ShowErrors
+}
+
 $output = @()
 
+$chapter = Read-Host What chapter number is this?
+$article_num = 0
+while ($article_num -eq [int]){
+    $article_num = Read-Host "What is the article number (spelled out) in the Ideal?"
+}
 $overarch = Read-Host "What is the `"Overarching Ideal`" of this page?"
-$overarch_num = Read-Host "What is the article number (spelled out) in the Ideal?"
-$output += "# $overarch | Article | $overarch_num"
-
-$micro_silly = Read-Host "What is something silly to subtitle this with?"
+$output += "# $overarch | Article | $article_num"
+$micro_silly = Write-TextRange -question "What is something silly to subtitle this with" -min 5 -max 20
 $output += "##### `_$micro_silly`_"
 $output += "-----"
 $output += ""
@@ -12,11 +28,7 @@ $output += ""
 $covered_context  = Read-Host "What is the Covered Context Title?"
 $output += "## **$covered_context**"
 
-while ($analogical.length -lt 300 -or $analogical.length -gt 350){
-    $analogical = Read-Host "What is an analogy to demonstrate this ideal? (60-70w:~2+L)"
-    "$($analogical.length / 5) words"
-}
-$output += $analogical | Check-Spelling -ShowErrors
+$output += Write-TextRange -question "What is an analogy to demonstrate this ideal" -min 60 -max 80
 $output += ""
 
 $all_list = @()
@@ -29,14 +41,9 @@ $all_list | foreach {
     $output += "*  $($_)"
 }
 
-while ($concept.length -lt 500 -or $concept.length -gt 600){
-    $concept = Read-Host "What is an analogy to demonstrate this ideal? (100-120w:~4+L)"
-    "$($concept.length / 5) words"
-}
-$output += $concept | Check-Spelling -ShowErrors
-$output += ""
+$output += Write-TextRange -question "Conceptually demonstrate this ideal" -min 80 -max 100
 
-Write-Host "What are the columns should the table have (wq ends)"
+Write-Host "What are the columns the table have (wq ends)"
 while ($column_item -ne "wq"){
     $column_item = Read-Host ">"
     if ($column_item -ne "wq" -and $column_item -ne ""){$all_columns += "$column_item|"}
@@ -63,25 +70,16 @@ while ($true){
     $data_row = $null
     if ($quit_table -eq "Y"){break}
 }
-$output += ""
 
-while ($technical.length -lt 400 -or $technical.length -gt 500){
-    $technical = Read-Host "What are some technical specifics about this ideal? (80-100w:~3+L)"
-    "$($technical.length / 5) words"
-}
-$output += $technical | Check-Spelling -ShowErrors
 $output += ""
-
-$tip = Read-Host "What is a tip you can give for this ideal?"
-$output += "> _$tip_"
+$output += Write-TextRange -question "What are some technical specifics about this ideal" -min 80 -max 100
 $output += ""
-
+$output += Write-TextRange -question "What is a tip you can give for this ideal" -min 10 -max 30
+$output += ""
 $output += "-----"
 $output += "## **Context Examples**"
 $output += ""
-
-$code_example_objective = Read-Host "What is the objective of this example"
-$output += $code_example_objective
+$output += Write-TextRange -question "What is the objective of this example" -min 40 -max 60
 $output += ""
 
 $num = 0
@@ -93,14 +91,39 @@ While ($codeblock -ne "wq"){
 }
 $output += "``````"
 
-
-
-
-
-$output += "## **Rhetoric**"
-$rhetoric = Read-Host "What is a rhetorical idea/s you can provide for the reader?"
-$output += $rhetoric
+$output += Write-TextRange -question "What is the details of this example" -min 60 -max 80
+$output += ""
+$output += "`[$overarch`]`(images/$($chapter)-$($article_num)-A.gif)"
+$output += ""
+$output += Write-TextRange -question "Please explain the image" -min 10 -max 30
+$output += "> _$img_explain_"
+$output += ""
 $output += "-----"
+$output += "## **Rhetoric**"
+$output += Write-TextRange -question "What is a rhetorical idea/s you can provide for the reader" -min 60 -max 80
+$output += ""
+$output += "-----"
+$output += "## **Answered Exercises**"
+$output += Write-TextRange -question "Summarize the excercise" -min 60 -max 80
 
+$all_list = @()
+Write-Host "List the steps to the excercise (wq ends)"
+while ($list_item -ne "wq"){
+    $list_item = Read-Host "#"
+    $all_list += $list_item
+}
+$count = 1
+$all_list | foreach {
+    $output += "$count`. $($_)"
+    $count++
+}
+$output += "[Answer in Appendix A](Appendix-A.md)"
+$output += ""
+$output += "-----"
+$output += "## **Context Examples**"
+$output += Write-TextRange -question "Ask about contributing to the GrayMatter Project" -min 20 -max 40
+$output += "[GrayMatter Project](https://github.com/pixelrebirth/GrayMatter)"
+
+$output > "$($chapter).Article_$($article_num)`.md"
 return $output
 
