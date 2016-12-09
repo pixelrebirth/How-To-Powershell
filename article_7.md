@@ -38,8 +38,8 @@ Code Explanation Detailed
 -----
 ## **Rhetoric**
 Ask questions to make people think of the context and use text
-    
 -----
+
 ## **Answered Exercises**
 Excercise Summary
 

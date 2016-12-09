@@ -46,7 +46,7 @@ $output += $all_columns
 Write-Host "Fill the table with information as needed"
 $all_columns.split("|") | foreach {
     $divider_row += "-----|"
-} 
+}
 $output += $divider_row
 
 Write-Host "Fill the rows with data"
@@ -63,6 +63,44 @@ while ($true){
     $data_row = $null
     if ($quit_table -eq "Y"){break}
 }
+$output += ""
+
+while ($technical.length -lt 400 -or $technical.length -gt 500){
+    $technical = Read-Host "What are some technical specifics about this ideal? (80-100w:~3+L)"
+    "$($technical.length / 5) words"
+}
+$output += $technical | Check-Spelling -ShowErrors
+$output += ""
+
+$tip = Read-Host "What is a tip you can give for this ideal?"
+$output += "> _$tip_"
+$output += ""
+
+$output += "-----"
+$output += "## **Context Examples**"
+$output += ""
+
+$code_example_objective = Read-Host "What is the objective of this example"
+$output += $code_example_objective
+$output += ""
+
+$num = 0
+$output += "``````PowerShell"
+While ($codeblock -ne "wq"){
+    $num++
+    $codeblock = read-host Code line $num
+    $output += $codeblock
+}
+$output += "``````"
+
+
+
+
+
+$output += "## **Rhetoric**"
+$rhetoric = Read-Host "What is a rhetorical idea/s you can provide for the reader?"
+$output += $rhetoric
+$output += "-----"
 
 return $output
 
