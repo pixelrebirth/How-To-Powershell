@@ -4,13 +4,18 @@ function Write-TextRange {
         [int]$max,
         [string]$question
     )
-    while ($string.length -lt ($min*50) -or $string.length -gt ($max*50)){
-        $string = Read-Host "$question ($($min)-$($max)w:~$([math]::Round($max/120))+L)"
-        Write-Host "$($string.length / 5) words"
+    $condition = $false
+    while ($condition -eq $false){
+        Write-Host ">>>>>>  :" -ForegroundColor Yellow -NoNewline
+        $string = Read-Host "$question ($($min)-$($max)w:~$([math]::Round(($max*5)/120))+L)"
+        Write-Host "$($string.length / 5) words" -ForegroundColor Cyan
+        $condition = $string.length -gt $($min*5) -and $string.length -lt $($max*5)
+        if ($condition -eq $false){Write-Host "Error is word length" -ForegroundColor Red}
     }
-    return $string | Check-Spelling -ShowErrors
+    return $string #| Check-Spelling -ShowErrors
 }
 
+cls
 $output = @()
 
 $chapter = Read-Host What chapter number is this?
@@ -43,14 +48,13 @@ $all_list | foreach {
 
 $output += Write-TextRange -question "Conceptually demonstrate this ideal" -min 80 -max 100
 
-Write-Host "What are the columns the table have (wq ends)"
+Write-Host "What are the columns the table should have (wq ends)"
 while ($column_item -ne "wq"){
     $column_item = Read-Host ">"
     if ($column_item -ne "wq" -and $column_item -ne ""){$all_columns += "$column_item|"}
 }
 $output += $all_columns
 
-Write-Host "Fill the table with information as needed"
 $all_columns.split("|") | foreach {
     $divider_row += "-----|"
 }
