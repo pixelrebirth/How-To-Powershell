@@ -19,9 +19,9 @@ cls
 $output = @()
 
 $chapter = Read-Host What chapter number is this?
-$article_num = 0
-while ($article_num -eq [int]){
-    $article_num = Read-Host "What is the article number (spelled out) in the Ideal?"
+$article_num = "NaN"
+while ($article_num -ne [int] -or $article_num -eq $null){
+    [int]$article_num = Read-Host "What is the article number (spelled out) in the Ideal?"
 }
 $overarch = Read-Host "What is the `"Overarching Ideal`" of this page?"
 $output += "# $overarch | Article | $article_num"
@@ -91,29 +91,39 @@ $output += "``````PowerShell"
 While ($codeblock -ne "wq"){
     $num++
     $codeblock = read-host Code line $num
+    if ($codeblock -eq "wq"){break}
     $output += $codeblock
 }
 $output += "``````"
 
+$output += ""
 $output += Write-TextRange -question "What is the details of this example" -min 60 -max 80
+
 $output += ""
 $output += "`[$overarch`]`(images/$($chapter)-$($article_num)-A.gif)"
+
 $output += ""
-$output += Write-TextRange -question "Please explain the image" -min 10 -max 30
-$output += "> _$img_explain_"
+$img_explain = Write-TextRange -question "Please explain the image" -min 10 -max 30
+
+$output += ""
+$output += "> _$img_explain`_"
+
 $output += ""
 $output += "-----"
 $output += "## **Rhetoric**"
 $output += Write-TextRange -question "What is a rhetorical idea/s you can provide for the reader" -min 60 -max 80
+
 $output += ""
 $output += "-----"
 $output += "## **Answered Exercises**"
 $output += Write-TextRange -question "Summarize the excercise" -min 60 -max 80
 
+$output += ""
 $all_list = @()
 Write-Host "List the steps to the excercise (wq ends)"
 while ($list_item -ne "wq"){
     $list_item = Read-Host "#"
+    if ($list_item -eq "wq"){break}
     $all_list += $list_item
 }
 $count = 1
@@ -121,13 +131,18 @@ $all_list | foreach {
     $output += "$count`. $($_)"
     $count++
 }
+
+$output += ""
 $output += "[Answer in Appendix A](Appendix-A.md)"
+
 $output += ""
 $output += "-----"
 $output += "## **Context Examples**"
 $output += Write-TextRange -question "Ask about contributing to the GrayMatter Project" -min 20 -max 40
+
+$output += ""
 $output += "[GrayMatter Project](https://github.com/pixelrebirth/GrayMatter)"
 
-$output > "$($chapter).Article_$($article_num)`.md"
+$output > "Chapter_$($chapter).Article_$($article_num)`.md"
 return $output
 
