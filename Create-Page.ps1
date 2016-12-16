@@ -4,6 +4,7 @@ function Write-TextRange {
         [int]$max,
         [string]$question
     )
+
     $condition = $false
     while ($condition -eq $false){
         Write-Host ">>>>>>  :" -ForegroundColor Yellow -NoNewline
@@ -18,10 +19,10 @@ function Write-TextRange {
 cls
 $output = @()
 
+$article_num = 1
 $chapter = Read-Host What chapter number is this?
-$article_num = "NaN"
-while ($article_num -ne [int] -or $article_num -eq $null){
-    [int]$article_num = Read-Host "What is the article number (spelled out) in the Ideal?"
+while ($article_num -match "^\d+$"){
+    [string]$article_num = Read-Host "What is the article number (spelled out) in the Ideal?"
 }
 $overarch = Read-Host "What is the `"Overarching Ideal`" of this page?"
 $output += "# $overarch | Article | $article_num"
@@ -40,7 +41,9 @@ $all_list = @()
 Write-Host "List a few one line high level comments about this syntax (wq ends)"
 while ($list_item -ne "wq"){
     $list_item = Read-Host "*"
-    $all_list += $list_item
+    if ($list_item -ne "wq"){
+        $all_list += $list_item
+    }
 }
 $all_list | foreach {
     $output += "*  $($_)"
@@ -54,6 +57,7 @@ while ($column_item -ne "wq"){
     if ($column_item -ne "wq" -and $column_item -ne ""){$all_columns += "$column_item|"}
 }
 $output += $all_columns
+$output += ""
 
 $all_columns.split("|") | foreach {
     $divider_row += "-----|"
@@ -64,8 +68,10 @@ Write-Host "Fill the rows with data"
 while ($true){
     $quit_table = "NaN"
     $all_columns.split("|") | foreach {
-        $column_content = read-host $_
-        $data_row += "$column_content|"
+        if ($_ -ne ""){
+            $column_content = read-host $_
+            $data_row += "$column_content|"
+        }
     }
     while ($quit_table -notmatch "^Y$|^N$"){
         $quit_table = Read-Host Quit? Y/N
@@ -121,10 +127,10 @@ $output += Write-TextRange -question "Summarize the excercise" -min 60 -max 80
 $output += ""
 $all_list = @()
 Write-Host "List the steps to the excercise (wq ends)"
-while ($list_item -ne "wq"){
-    $list_item = Read-Host "#"
-    if ($list_item -eq "wq"){break}
-    $all_list += $list_item
+while ($excercise_item -ne "wq"){
+    $excercise_item = Read-Host "#"
+    if ($excercise_item -eq "wq"){break}
+    $all_list += $excercise_item
 }
 $count = 1
 $all_list | foreach {
