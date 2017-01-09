@@ -1,7 +1,7 @@
 function Write-TextRange {
     param (
-        [int]$min,
-        [int]$max,
+        [int]$min = 50,
+        [int]$max = 100,
         [string]$question
     )
 
@@ -150,5 +150,9 @@ $output += ""
 $output += "[GrayMatter Project](https://github.com/pixelrebirth/GrayMatter)"
 
 $output > "Chapter_$($chapter).Article_$($article_num)`.md"
-return $output
 
+#Output answers to Appendix A after question
+#Output terminology to Appendix B
+#Fix the table to not have an additional column
+
+return $output
