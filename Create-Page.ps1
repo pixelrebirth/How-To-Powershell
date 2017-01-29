@@ -59,7 +59,7 @@ while ($column_item -ne "wq"){
 $output += $all_columns
 $output += ""
 
-$all_columns.split("|") | foreach {
+$all_columns.trim("|").split("|") | foreach {
     $divider_row += "-----|"
 }
 $output += $divider_row
@@ -141,6 +141,7 @@ $all_list | foreach {
 $output += ""
 $output += "[Answer in Appendix A](Appendix-A.md)"
 
+
 $output += ""
 $output += "-----"
 $output += "## **Context Examples**"
@@ -149,10 +150,13 @@ $output += Write-TextRange -question "Ask about contributing to the GrayMatter P
 $output += ""
 $output += "[GrayMatter Project](https://github.com/pixelrebirth/GrayMatter)"
 
-$output > "Chapter_$($chapter).Article_$($article_num)`.md"
+$output += ""
+$output += "-----"
+$output += "Please remember to add the answer to the excercise to Appendix A"
+$output += ""
+$output += "-----"
+$output += "Please remember to add definitions to the excercise to Appendix B"
 
-#Output answers to Appendix A after question
-#Output terminology to Appendix B
-#Fix the table to not have an additional column
+$output > "Chapter_$($chapter).Article_$($article_num)`.md"
 
 return $output
